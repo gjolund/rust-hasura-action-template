@@ -1,4 +1,4 @@
-FROM austinrivas/rust-warp-builder:stable as builder
+FROM austinrivas/rust-actix-builder:stable as builder
 
 COPY ./main/Cargo.lock ./main/Cargo.toml ./main/
 COPY ./main/src ./main/src
@@ -7,11 +7,12 @@ COPY ./function/src ./function/src
 
 RUN cd main \
     && cargo build \
+        --target x86_64-unknown-linux-musl \
         --release
 
 FROM austinrivas/openfaas-binary-runner:stable as runner
 
-COPY --from=builder /home/rust/main/target/release/main /usr/bin/main
+COPY --from=builder /home/rust/main/target/x86_64-unknown-linux-musl/release/main /usr/bin/main
 
 # OpenFaaS vars
 ENV cgi_headers="true"

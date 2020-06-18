@@ -8,6 +8,8 @@ ENV FUNC_HOME_DIR=/home/rust
 
 RUN mkdir -p ${FUNC_HOME_DIR} \
   && cargo install systemfd watchexec \
+  && rustup component add clippy --toolchain 1.44.0-x86_64-unknown-linux-gnu \
+  && rustup component add fmt --toolchain 1.44.0-x86_64-unknown-linux-gnu \
   && chmod +x /usr/bin/fwatchdog \
   && addgroup --system --gid 12000 fn_group \ 
   && adduser --system --home ${FUNC_HOME_DIR} -u 12000 --gid 12000 fn_user \

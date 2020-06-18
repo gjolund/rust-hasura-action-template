@@ -8,12 +8,12 @@ pub async fn handler() -> impl Responder {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use actix_web::{http::StatusCode, test, App};
     use actix_http::Request;
+    use actix_web::{http::StatusCode, test, App};
     use bytes::Bytes;
 
     fn create_req() -> Request {
-      test::TestRequest::with_uri("/").to_request()
+        test::TestRequest::with_uri("/").to_request()
     }
 
     #[actix_rt::test]

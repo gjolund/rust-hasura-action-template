@@ -18,7 +18,20 @@ Languages available as templates:
 faas new <name> --lang rust-hasura-action
 ```
 
-## Testing
+## Usage
+
+This template provides a thin wrapper around the [Rust Actix Server](https://actix.rs/). The wrapper implementation closely mirrors the [server docs](https://actix.rs/docs/server/).
+
+### [Handler](template/rust-hasura-action/function/src/lib.rs)
+### [Wrapper](template/rust-hasura-action/main/src/main.rs)
+
+## Extras
+
+### Example Function
+
+A working example of this function template can be found [here](https://github.com/austinrivas/openfaas_rust-hasura-action).
+
+### Testing
 
 ```sh
 cargo test --manifest-path ./template/rust-hasura-action/main/Cargo.toml
@@ -38,19 +51,6 @@ cargo fmt --manifest-path ./template/rust-hasura-action/function/Cargo.toml
 cargo clippy --manifest-path ./template/rust-hasura-action/main/Cargo.toml
 cargo clippy --manifest-path ./template/rust-hasura-action/function/Cargo.toml
 ```
-
-## Usage
-
-This template provides a thin wrapper around the [Rust Actix Server](https://actix.rs/). The wrapper implementation closely mirrors the [example server](https://github.com/seanmonstar/warp#example).
-
-### [Example Handler](template/rust-warp/function/src/lib.rs)
-### [Wrapper](template/rust-warp/main/src/main.rs)
-
-## Example Function
-
-A working example of this function template can be found [here](https://github.com/austinrivas/openfaas_rust-hasura-action).
-
-## Extras
 
 ### [rust-actix-builder](https://hub.docker.com/r/austinrivas/rust-actix-builder/dockerfile)
 

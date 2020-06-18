@@ -28,7 +28,7 @@ ENV write_timeout="15s"
 ENV read_timeout="15s"
 
 # Set up watchdog for HTTP mode
-ENV fprocess="cargo run --manifest-path ./main/Cargo.toml"
+ENV fprocess="cargo run --manifest-path ./main/Cargo.toml --profile dev -Z unstable-options"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 ENV TEMPLATE_SOURCE_URL=https://raw.githubusercontent.com/austinrivas/rust-hasura-action-template/master/template/rust-hasura-action/main

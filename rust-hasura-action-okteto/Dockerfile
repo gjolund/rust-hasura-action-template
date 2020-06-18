@@ -7,6 +7,7 @@ COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 ENV FUNC_HOME_DIR=/home/rust
 
 RUN mkdir -p ${FUNC_HOME_DIR} \
+  && cargo install systemfd \
   && chmod +x /usr/bin/fwatchdog \
   && addgroup --system --gid 12000 fn_group \ 
   && adduser --system --home ${FUNC_HOME_DIR} -u 12000 --gid 12000 fn_user \
@@ -28,11 +29,10 @@ ENV write_timeout="15s"
 ENV read_timeout="15s"
 
 # Set up watchdog for HTTP mode
-ENV fprocess="cargo run --manifest-path ./main/Cargo.toml --profile dev -Z unstable-options"
+ENV fprocess="systemfd --no-pid -s http::3000 -- cargo watch -x run"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
-ENV TEMPLATE_SOURCE_URL=https://raw.githubusercontent.com/austinrivas/rust-hasura-action-template/master/template/rust-hasura-action/main
+ENV TEMPLATE_SOURCE_URL=https://raw.githubusercontent.com/austinrivas/rust-hasura-action-template/master/rust-hasura-action-okteto
 
 ADD --chown=fn_user:fn_group ${TEMPLATE_SOURCE_URL}/src/main.rs ./main/src/
 ADD --chown=fn_user:fn_group ${TEMPLATE_SOURCE_URL}/Cargo.toml ./main/
-ADD --chown=fn_user:fn_group ${TEMPLATE_SOURCE_URL}/Cargo.lock ./main/

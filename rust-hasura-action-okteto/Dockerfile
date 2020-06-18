@@ -8,8 +8,6 @@ ENV FUNC_HOME_DIR=/home/rust
 
 RUN mkdir -p ${FUNC_HOME_DIR} \
   && cargo install systemfd watchexec \
-  && rustup component add clippy --toolchain 1.44.0-x86_64-unknown-linux-gnu \
-  && rustup component add fmt --toolchain 1.44.0-x86_64-unknown-linux-gnu \
   && chmod +x /usr/bin/fwatchdog \
   && addgroup --system --gid 12000 fn_group \ 
   && adduser --system --home ${FUNC_HOME_DIR} -u 12000 --gid 12000 fn_user \
@@ -32,7 +30,7 @@ ENV read_timeout="15s"
 # Set up watchdog for HTTP mode
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
-ENV REPO_URL=https://raw.githubusercontent.com/austinrivas/rust-hasura-action-template/testing
+ENV REPO_URL=https://raw.githubusercontent.com/austinrivas/rust-hasura-action-template/master
 ENV TEMPLATE_SOURCE_URL=${REPO_URL}/rust-hasura-action-okteto/main
 ENV HANDLER_SOURCE_URL=${REPO_URL}/template/rust-hasura-action/function
 

@@ -29,7 +29,7 @@ This template provides a thin wrapper around the [Rust Actix Server](https://act
 
 ### Example Function
 
-A working example of this function template can be found [here](https://github.com/austinrivas/openfaas_rust-hasura-action).
+A working example of this function template can be found [here](https://github.com/austinrivas/openfaas_rust-hasura-action_func).
 
 ### Testing
 
@@ -64,7 +64,7 @@ A runner Docker alpine image that is optimized to run OpenFaaS binaries with min
 
 ### [rust-hasura-action-okteto](https://hub.docker.com/r/austinrivas/rust-hasura-action-okteto/dockerfile)
 
-Based on `rust-actix-builder` this image is designed to run `rust-hasura-action` OpenFaaS functions on the [Okteto](https://okteto.com/) remote development platform. It includes pre-compiled base dependencies and additional configuration to optimize it for okteto. For additional information on how to configure a function for okteto see [openfaas_rust-hasura-action](https://github.com/austinrivas/openfaas_rust-hasura-action).
+Based on `rust-actix-builder` this image is designed to run `rust-hasura-action` OpenFaaS functions on the [Okteto](https://okteto.com/) remote development platform. It includes pre-compiled base dependencies and additional configuration to optimize it for okteto. For additional information on how to configure a function for okteto see [openfaas_rust-hasura-action_func](https://github.com/austinrivas/openfaas_rust-hasura-action_func).
 
 ### CI / CD
 

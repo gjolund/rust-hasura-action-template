@@ -7,7 +7,7 @@ COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 ENV FUNC_HOME_DIR=/home/rust
 
 RUN mkdir -p ${FUNC_HOME_DIR} \
-  && cargo install systemfd \
+  && cargo install systemfd cargo-watch \
   && chmod +x /usr/bin/fwatchdog \
   && addgroup --system --gid 12000 fn_group \ 
   && adduser --system --home ${FUNC_HOME_DIR} -u 12000 --gid 12000 fn_user \
